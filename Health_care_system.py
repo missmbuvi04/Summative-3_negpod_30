@@ -16,7 +16,7 @@ class HealthcareSystem:
         if patient_id in self.patients:
             print(f"Patient {patient_id} is already registered.")
         else:
-           self.patients[patient_id] = patient_info
+            self.patients[patient_id] = patient_info
             print(f"Patient {patient_id} has been registered and checked in.") 
     
     def book_appointment(self, patient_id, doctor_type="General"):
@@ -24,7 +24,16 @@ class HealthcareSystem:
             print(f"Patient {patient_id} is not registered.")
         else:
             print(f"Appointment booked for patient {patient_id} with {doctor_type} Doctor.") 
-   
+    
+    def place_in_queue(self, patient_id):
+        if patient_id not in self.patients:
+            print(f"Patient {patient_id} is not registered.")
+        elif patient_id in self.queue:
+            print(f"Patient {patient_id} is already in the queue.")
+        else:
+            self.queue.append(patient_id)
+            print(f"Patient {patient_id} has been placed in the queue.")
+       
 # Create an instance of the HealthcareSystem class
 healthcare_system = HealthcareSystem()
 
@@ -34,3 +43,7 @@ healthcare_system.prompt_patient_registration()
 # Call the book_appointment method to book an appointment for the registered patient
 patient_id = input("Enter patient ID to book appointment: ")
 healthcare_system.book_appointment(patient_id)
+
+# Call the place_in_queue method to place the registered patient in the queue
+patient_id_queue = input("Enter patient ID to place in the queue: ")
+healthcare_system.place_in_queue(patient_id_queue)
