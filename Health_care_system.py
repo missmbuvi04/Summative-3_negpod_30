@@ -33,7 +33,14 @@ class HealthcareSystem:
         else:
             self.queue.append(patient_id)
             print(f"Patient {patient_id} has been placed in the queue.")
-       
+   
+    def send_notification(self, patient_id):
+        if patient_id in self.queue:
+            queue_status = self.queue.index(patient_id) + 1
+            print(f"Notification sent to patient {patient_id}. Queue status: {queue_status}")
+        else:
+            print(f"Patient {patient_id} is not in the queue.")
+
 # Create an instance of the HealthcareSystem class
 healthcare_system = HealthcareSystem()
 
@@ -47,3 +54,7 @@ healthcare_system.book_appointment(patient_id)
 # Call the place_in_queue method to place the registered patient in the queue
 patient_id_queue = input("Enter patient ID to place in the queue: ")
 healthcare_system.place_in_queue(patient_id_queue)
+
+# Call the send_notification method to send a notification to a patient in the queue
+patient_id_notification = input("Enter patient ID to send notification: ")
+healthcare_system.send_notification(patient_id_notification)
