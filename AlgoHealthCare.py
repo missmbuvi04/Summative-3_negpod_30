@@ -14,6 +14,7 @@ class HealthcareSystem:
             self.patients[patient_id] = patient_info
             print(f"Patient {patient_id} has been registered and checked in.")
 
+
     # 2. Alice's function
     def book_appointment(self, patient_id, doctor_type="General"):
         if patient_id not in self.patients:
