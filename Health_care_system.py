@@ -58,3 +58,17 @@ healthcare_system.place_in_queue(patient_id_queue)
 # Call the send_notification method to send a notification to a patient in the queue
 patient_id_notification = input("Enter patient ID to send notification: ")
 healthcare_system.send_notification(patient_id_notification)
+
+def track_queue_and_allocate_resources(self):
+        if not self.queue:
+            print("The queue is empty.")
+        else:
+            for i, patient_id in enumerate(self.queue):
+                self.resources[patient_id] = "Resource Allocated"
+                print(f"Tracking Queue: Patient {patient_id} is number {i+1} in the queue.")
+
+
+# Call 
+track_queue_and_allocate_resources method to track the queue and allocate resources
+healthcare_system.track_queue_and_allocate_resources()
+
