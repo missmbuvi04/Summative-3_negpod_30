@@ -73,4 +73,7 @@ healthcare_system.send_notification(patient_id_notification)
 
 # Call the track_queue_and_allocate_resources method to track the queue and allocate resources
 healthcare_system.track_queue_and_allocate_resources()
-
+ 
+# Call the ask_payment_method method to ask for the payment method for the patient
+patient_id_payment = input("Enter patient ID to ask for payment method: ")
+healthcare_system.ask_payment_method(patient_id_payment)
