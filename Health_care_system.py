@@ -41,6 +41,10 @@ class HealthcareSystem:
         else:
             print(f"Patient {patient_id} is not in the queue.")
 
+    def ask_payment_method(self, patient_id):
+        payment_method = input(f"Enter payment method for patient {patient_id}: ")
+        print(f"Payment method {payment_method} recorded for patient {patient_id}.")
+
 # Create an instance of the HealthcareSystem class
 healthcare_system = HealthcareSystem()
 
