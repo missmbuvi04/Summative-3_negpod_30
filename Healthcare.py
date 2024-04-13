@@ -12,8 +12,8 @@ class HealthcareSystem:
             # password="mypassword",
             # database="healthcare_system_db"
             host="localhost",
-            user="root",
-            password="",
+            user="missmbuvi",
+            password="mypassword",
             database="healthcare_system_db"
         )
         self.cursor = self.conn.cursor()
@@ -22,7 +22,7 @@ class HealthcareSystem:
     def create_tables(self):
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS patients (
-                patient_id INT AUTO_INCREMENT PRIMARY KEY,
+                patient_id INT AUTO_INCREMENT ,
                 name VARCHAR(255),
                 gender ENUM('Male', 'Female', 'Other')
             )
