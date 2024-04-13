@@ -1,12 +1,19 @@
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import smtplib
 import mysql.connector
 from datetime import datetime
 
 class HealthcareSystem:
     def __init__(self):
         self.conn = mysql.connector.connect(
+            # host="localhost",
+            # user="missmbuvi",
+            # password="mypassword",
+            # database="healthcare_system_db"
             host="localhost",
-            user="missmbuvi",
-            password="mypassword",
+            user="root",
+            password="",
             database="healthcare_system_db"
         )
         self.cursor = self.conn.cursor()
@@ -57,8 +64,29 @@ class HealthcareSystem:
             self.cursor.execute(sql, val)
             self.conn.commit()
             print("Appointment booked successfully!")
+            email_body = f"An appointment has been booked for {appointment_date} with Dr. {doctor_name}. Type: {appointment_type}. Payment method: {payment_method}."
+            self.send_email("givenality@gmail.com", "Appointment Confirmation", email_body)
         except mysql.connector.Error as err:
             print(f"Error: {err}")
+
+            
+        
+
+    def send_email(self, recipient, subject, body):
+        try:
+            s = smtplib.SMTP(host='mtabeapp.com', port=587)
+            s.starttls()
+            s.login('given@mtabeapp.com', 'C0mf1rM3DL8rBr0!')
+            msg = MIMEMultipart()
+            msg['From'] = 'gedward15@alustudent.com'
+            msg['To'] = recipient
+            msg['Subject'] = subject
+            msg.attach(MIMEText(body, 'plain'))
+            s.send_message(msg)
+            s.quit()
+            print("Email sent successfully!")
+        except smtplib.SMTPException as e:
+            print(f"Failed to send email: {e}")
 
 # Create an instance of the HealthcareSystem class
 healthcare_system = HealthcareSystem()
