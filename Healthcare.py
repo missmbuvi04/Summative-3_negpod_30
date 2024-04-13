@@ -12,8 +12,8 @@ class HealthcareSystem:
             # password="mypassword",
             # database="healthcare_system_db"
             host="localhost",
-            user="missmbuvi",
-            password="mypassword",
+            user="DavidDau",
+            password="37-also-college-42",
             database="healthcare_system_db"
         )
         self.cursor = self.conn.cursor()
@@ -24,7 +24,8 @@ class HealthcareSystem:
             CREATE TABLE IF NOT EXISTS patients (
                 patient_id INT AUTO_INCREMENT ,
                 name VARCHAR(255),
-                gender ENUM('Male', 'Female', 'Other')
+                gender ENUM('Male', 'Female', 'Other'),
+                emails VARCHAR(225), NOT NULL
             )
         """)
         self.cursor.execute("""
@@ -55,12 +56,13 @@ class HealthcareSystem:
         except mysql.connector.Error as err:
             print(f"Error: {err}")
 
-    def book_appointment(self, patient_id, doctor_name, appointment_type):
+    def book_appointment(self, patient_id, doctor_name, appointment_type, emails):
         try:
             appointment_date = input("Enter appointment date (YYYY-MM-DD): ")
             payment_method = input("Enter payment method: ")
-            sql = "INSERT INTO appointments (patient_id, doctor_name, appointment_date, appointment_type, payment_method) VALUES (%s, %s, %s, %s, %s)"
-            val = (patient_id, doctor_name, appointment_date, appointment_type, payment_method)
+            emails = input("Enter your email: ")
+            sql = "INSERT INTO appointments (patient_id, doctor_name, appointment_date, appointment_type, payment_method, emails) VALUES (%s, %s, %s, %s, %s, %s)"
+            val = (patient_id, doctor_name, appointment_date, appointment_type, payment_method, emails)
             self.cursor.execute(sql, val)
             self.conn.commit()
             print("Appointment booked successfully!")
@@ -98,5 +100,6 @@ healthcare_system.prompt_patient_registration()
 patient_id = int(input("Enter patient ID: "))  # Assuming patient ID is already available
 doctor_name = input("Enter doctor's name: ")
 appointment_type = input("Enter appointment type: ")
+emails = input("Enter your email: ")
 healthcare_system.book_appointment(patient_id, doctor_name, appointment_type)
 

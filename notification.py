@@ -14,13 +14,13 @@ app.config['MAIL_PASSWORD'] = 'cvwk jinh tuuu vhfq'
 mail = Mail(app)
 
 # Assuming you have a list of registered users with their emails
-registered_users = ['d.cyubahiro1@alustudent.com']
+registered_users = ['m.mbuvi@alustudent.com']
 
 @app.route('/send_notification')
 def send_notification():
     for user_email in registered_users:
-        msg = Message('Notification Subject', sender='your_email@example.com', recipients=[user_email])
-        msg.body = 'Notification message goes here.'
+        msg = Message('It works', sender='b.mugwadi1@alustudent.com', recipients=[user_email])
+        msg.body = 'Our code works now.'
         mail.send(msg)
     return 'Notification sent to all registered users.'
 
