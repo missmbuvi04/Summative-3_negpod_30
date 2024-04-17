@@ -12,8 +12,8 @@ class HealthcareSystem:
             # password="mypassword",
             # database="healthcare_system_db"
             host="localhost",
-            user="DavidDau",
-            password="37-also-college-42",
+            user="Lungile6",
+            password="0plmnko9LM@#",
             database="healthcare_system_db"
         )
         self.cursor = self.conn.cursor()
